@@ -1,0 +1,23 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/webflux
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/auth/realms/LCPRealm
+          jwk-set-uri: http://localhost:8080/auth/realms/LCPRealm/protocol/openid-connect/certs
+      client:
+        registration:
+          keycloak:
+            authorization-grant-type: client_credentials
+            client-id: ${CLIENT_ID:lenovo-client}
+            client-secret: ${CLIENT_SECRET:f7207902-4b48-4ff8-874f-33bec02f6dae}
+        provider:
+          keycloak:
+            token-uri: http://localhost:8080/auth/realms/LCPRealm/protocol/openid-connect/token
+server:
+  port: 8099
+
+
